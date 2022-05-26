@@ -1,0 +1,18 @@
+# node
+node_modules/
+
+# macOS
+.DS_Store
+
+# project-specific
+.cache
+
+# TypeScript build
+dist/
+
+# static folder
+public/*
+!public/.gitkeep
+
+# log folder
+log/

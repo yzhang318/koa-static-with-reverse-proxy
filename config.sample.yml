@@ -1,0 +1,44 @@
+################################################################################
+# server configuration
+#
+# This file configures parameters of the proxied static file server.
+################################################################################
+server:
+  # listening port for HTTP
+  port: 10000
+  # global timeout in millisecond
+  timeout: 60000
+
+  # SSL configuration if you want to use HTTPS
+  #
+  # A sample certificate / key is provided at project root for quick usage
+  ssl:
+    # SSL runs on a different port such that both HTTP/HTTPS could be tested at
+    # the same time
+    port: 10001
+
+    # path of key and certificate (crt) file
+    key: ./server.key
+    cert: ./server.crt
+
+  # public folder for hosting static files, your web page (html / js / css ...)
+  # folder should match configuration in this section.
+  public:
+    # path to public folder
+    path: public
+    # mounting point, if `/abc` is provided, you have to access the hosted
+    # content, for example `/public/index.html` at localhost:port/abc/index.html
+    mount: /
+
+  # proxy all requests matching a prefix to another destination.
+  proxy:
+    # proxy target, put only domain names or IP addresses, no port.
+    host: localhost
+    # proxy port
+    port: 10002
+    # all requests matching the prefix will be proxied
+    prefix: /api
+
+  # logs
+  log:
+    infoFile: log/info.log
