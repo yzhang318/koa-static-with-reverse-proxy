@@ -2,7 +2,9 @@
 
 [中文文档](./README-zh.md)
 
-This project provides a ready-to-go static server and reverse proxy server using Koa and TypeScript.
+This project provides a ready-to-go static server, reverse proxy server and SSL demo certificates using Koa and TypeScript.
+
+A small gadget to help speed up testing and infrastructuring during DevOps.
 
 ![Architecture](doc/architecture.png)
 
@@ -34,3 +36,8 @@ ESLint is configured with Airbnb rule and Node environment. The configuration fi
 ```shell
 $ pnpm lint
 ```
+# Misc
+
+## SSL Certificate
+
+A certificate and corresponding signing key is included in this project. However, these files are not signed by any trusted certificate organization. Your browser should complain about their invalidity -  when you see the complaint, ignoring it is fine, but DO NOT use them in production.

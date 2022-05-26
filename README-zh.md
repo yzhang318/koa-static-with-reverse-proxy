@@ -1,6 +1,6 @@
 # koa-static-with-reverse-proxy
 
-本项目使用 Koa 与 TypeScript 搭建了开箱即用的集成静态文件服务与反向代理服务的应用。特别适合于开发中途做页面测试使用。
+本项目使用 Koa 与 TypeScript 搭建了开箱即用的集成静态文件服务与反向代理服务的应用，随项目包含了 HTTPS 的 demo 证书。特别适合于开发/部署中途快速测试。
 
 ![Architecture](doc/architecture.png)
 
@@ -32,3 +32,9 @@ ESLint 的配置文件在 `/.eslintrc.yml`，配置了 Airbnb 规则与 Node 运
 ```shell
 $ pnpm lint
 ```
+
+# 其他
+
+## SSL 证书
+
+项目根路径下包含了 `server.*` 的两个文件分别为证书与签名文件。它们不是证书管理机构签发的正式文件，仅仅是测试用的临时文件。所以如果你用了它们，应该会提示证书错误——不过当你看到证书错误时，说明你的 HTTPS 服务已经在工作了。不要在生产环境中用它们。
