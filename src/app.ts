@@ -39,18 +39,20 @@ app.use(mount(serverConfig.public.mount, staticSite));
 let server: ServerHttp;
 let serverSsl: ServerHttps;
 
-const options = {
-  key: fs.readFileSync(serverConfig.ssl.key).toString(),
-  cert: fs.readFileSync(serverConfig.ssl.cert).toString(),
-};
-
 function run() {
   logger.info(`server started with settings ${JSON.stringify(serverConfig)}`);
   server = createServer(app.callback()).listen(serverConfig.port);
-  serverSsl = createServerSsl(options, app.callback()).listen(serverConfig.ssl.port);
-
   server.requestTimeout = serverConfig.timeout;
-  serverSsl.requestTimeout = serverConfig.timeout;
+
+  if (serverConfig.ssl) {
+    const options = {
+      key: fs.readFileSync(serverConfig.ssl.key).toString(),
+      cert: fs.readFileSync(serverConfig.ssl.cert).toString(),
+    };
+
+    serverSsl = createServerSsl(options, app.callback()).listen(serverConfig.ssl.port);
+    serverSsl.requestTimeout = serverConfig.timeout;
+  }
 }
 
 // server start / stop to support flexible DevOps

@@ -27,7 +27,9 @@ There is one `config.yml` under the folder for out-of-the-box usage.
 ## Run
 
 ```shell
-$ node src/run.ts
+# demo case for starting using pm2
+$ pm2 install typescript
+$ pm2 start src/run.ts --name my_service_name
 ```
 ## Style Check / Linting
 

@@ -10,6 +10,7 @@ server:
   timeout: 60000
 
   # SSL configuration if you want to use HTTPS
+  # don't provide `ssl` if you do not intend to use HTTPS
   #
   # A sample certificate / key is provided at project root for quick usage
   ssl:
