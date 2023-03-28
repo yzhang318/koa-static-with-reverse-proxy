@@ -6,8 +6,8 @@ server:
     key: ./server.key
     cert: ./server.crt
   public:
-    path: public
-    mount: /
+    - path: public
+      mount: /
   proxy:
     host: localhost
     port: 10002

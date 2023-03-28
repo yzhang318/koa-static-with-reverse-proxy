@@ -28,12 +28,14 @@ app.use(koaProxy(serverConfig.proxy.prefix, {
 }));
 
 // mount static site with html-5 hitory mode
-const staticSite = new Koa();
-staticSite
-  .use(history())
-  .use(serve(serverConfig.public.path));
+for (let i = 0; i < serverConfig.public.length; i += 1) {
+  const staticSite = new Koa();
+  staticSite
+    .use(history())
+    .use(serve(serverConfig.public[i].path));
 
-app.use(mount(serverConfig.public.mount, staticSite));
+  app.use(mount(serverConfig.public[i].mount, staticSite));
+}
 
 // HTTP and HTTPS server setup
 let server: ServerHttp;
